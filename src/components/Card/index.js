@@ -18,21 +18,26 @@ function Card(props) {
   }, [character]);
 
   return (
-      <div className="card" style={{border: `3px solid ${theme}`}}>
-          <div className="charcter-img-wrapper">
-              <img alt={character.name} className="character-img" src={character.image} />
-          </div>
-          <div className="card-text-wrapper">
-              {name && <h2 className="card-title">Happy Birthday {name}</h2>}
-              {message && <p className="card-text">{message}</p>}
-              {character.sound && 
+      <>
+        <div className="card" style={{border: `10px solid ${theme}`}}>
+            <div className="charcter-img-wrapper">
+                <img alt={character.name} className="character-img" src={character.image} />
+            </div>
+            <div className="card-text-wrapper">
+                {name && <h2 className="card-title">Happy Birthday {name}</h2>}
+                {message && <p className="card-text">{message}</p>}
+            </div>
+        </div>
+        {character.sound && 
+            <div className="audio-wrapper">
+                <h2>PLAY ME</h2> 
                 <audio ref={audioRef} controls>
                     <source src={soundSrc} type="audio/wav" />
                     Your browser does not support the audio element.
                 </audio>
-               }
-          </div>
-      </div>
+            </div>
+        }
+      </>
   );
 }
 
